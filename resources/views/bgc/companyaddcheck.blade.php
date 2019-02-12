@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="col-12">
-        <form action="companiescreate" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form action="companycreate" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8">
             <div class="card-header">
                 <h3 class="card-title">@yield('title')</h3>
             </div>

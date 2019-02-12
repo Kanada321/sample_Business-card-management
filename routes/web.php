@@ -10,18 +10,29 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('hello', 'HelloController@index');
-Route::post('hello', 'HelloController@post');
-Route::get('companielist', 'CompaniesController@index');
-Route::get('companiesadd', 'CompaniesController@add');
-Route::post('companiescheck', 'CompaniesController@addcheck');
-Route::post('companiescreate', 'CompaniesController@create');
-Route::get('companydetail', 'CompaniesController@detail');
+Route::get('/', 'BgclistController@index');//削除ボタン追加
+Route::get('top', 'BgclistController@index');
+Route::get('bgcadd', 'BgclistController@add');//bgcadd 名刺追加
+Route::get('bgcadd', 'BgclistController@addcheck');//bgcadd 名刺追加確認
+Route::post('bgccreate', 'BgclistController@create');//名刺追加実行
+Route::get('bgcedit', 'BgclistController@edit');//名刺編集
+Route::post('bgcupdate', 'BgclistController@update');//名刺編集保存
 
+//bgcadd 名刺編集
+Route::get('companieslist', 'CompaniesController@index');//削除ボタン追加
+Route::get('companyadd', 'CompaniesController@add');
+Route::post('companycheck', 'CompaniesController@addcheck');
+Route::post('companycreate', 'CompaniesController@create');
+Route::get('companydetail', 'CompaniesController@detail');
+Route::post('companyedit',  'CompaniesController@edit');
+Route::get('companyedit',  'CompaniesController@edit');//バリデートで戻った時
+Route::post('companyupdate',  'CompaniesController@update');
+
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

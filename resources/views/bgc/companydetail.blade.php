@@ -5,9 +5,9 @@
 
 @section('content')
     <div class="col-12">
-        <form action="companyupdate" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form action="companyedit" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8">
             <div class="card-header">
-                <h3 class="card-title">@yield('title')</h3>
+                <h3 class="card-title">@yield('title'){!! session('flash_message') !!}</h3>
             </div>
             {{ csrf_field() }}
         <div class="card-body">

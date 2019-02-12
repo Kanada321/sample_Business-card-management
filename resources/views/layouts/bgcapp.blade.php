@@ -57,19 +57,16 @@ $path = "http://192.168.11.11:8888/laravel/laravel_bgc/public/";
                     <div class="col-lg order-lg-first">
                         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                             <li class="nav-item">
-                                <a href="top" class="nav-link"><i class="fe fe-home"></i> 名刺管理アプリ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="bgclist" class="nav-link">　 名刺情報一覧</a>
+                                <a href="top" class="nav-link"><i class="fe fe-home"></i> 名刺一覧</a>
                             </li>
                             <li class="nav-item">
                                 <a href="bgcadd" class="nav-link">　 名刺情報追加</a>
                             </li>
                             <li class="nav-item">
-                                <a href="companielist" class="nav-link">　 会社一覧</a>
+                                <a href="companieslist" class="nav-link">　 会社一覧</a>
                             </li>
                             <li class="nav-item">
-                                <a href="companiesadd" class="nav-link">　 会社追加</a>
+                                <a href="companyadd" class="nav-link">　 会社追加</a>
                             </li>
                         </ul>
                     </div>

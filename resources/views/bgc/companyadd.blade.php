@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-12">
-        <form action="companiescheck" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form action="companycheck" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8">
             <div class="card-header">
                 <h3 class="card-title">@yield('title')</h3>
             </div>
@@ -113,9 +113,7 @@
                 <div class="col-md-12">
                     <div class="form-group mb-0">
                         <label class="form-label">備考</label>
-                        <textarea rows="5" class="form-control" name="comment" placeholder="備考を記入してください。">
-                            {{old('comment')}}
-                        </textarea>
+                        <textarea rows="5" class="form-control" name="comment" placeholder="備考を記入してください。">{{old('comment')}}</textarea>
                     </div>
                 </div>
             </div>

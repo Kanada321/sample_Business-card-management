@@ -19,14 +19,34 @@ class CompaniesController extends Controller
     {
      /*get：会社新規登録入力画面*/
 
-     return view('bgc.companiesadd');
+     return view('bgc.companyadd');
     }
 
-    public function update()
+    public function edit(Request $request)
     {
-        /*get：会社新規登録入力画面*/
+        /*post：会社編集画面*/
+        if( $request->session()->get('errors')){
+            $items = (object)[];
+            $old_ar = $request->session()->get('_old_input');
+            foreach($old_ar as $key => $old){
+                $items->$key = $old;
+            }
+        }else{
+            $items = Companies::where('id', $request->id)->first();
+        }
+        return view('bgc.companyedit',['items' => $items]);
+    }
 
-        return view('bgc.companiesadd');
+    public function update(Request $request){
+        /*post：update実行メソッド*/
+        $this->validate($request, Companies::up_rules($request->id));
+        $companies = Companies::find($request->id);
+        $from = $request->all();
+        unset($from['_token']);
+        $companies->fill($from)->save();
+        $request->session()->flash('flash_message', '　<span class="small text-muted">更新しました。</span>');
+        return redirect('companydetail?id='.$request->id);
+
     }
 
     public function addcheck(Request $request)
@@ -36,7 +56,7 @@ class CompaniesController extends Controller
         $input = $request->all();
         unset($input['_token']);
         $param = ['input' => $input];
-        return view('bgc.companiesaddCheck', $param);
+        return view('bgc.companyaddcheck', $param);
     }
 
     public function create(Request $request)
@@ -46,7 +66,7 @@ class CompaniesController extends Controller
         $from = $request->all();
         unset($from['_token']);
         $companies->fill($from)->save();
-        echo "OK";
+        return redirect('companieslist');
     }
 
     public function detail(Request $request){
