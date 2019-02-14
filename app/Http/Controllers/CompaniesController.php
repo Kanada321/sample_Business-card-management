@@ -75,4 +75,14 @@ class CompaniesController extends Controller
         return view('bgc.companydetail',['items' => $items]);
 
     }
+
+    public function remove(Request $request)
+    {
+        $items = Companies::where('id', $request->id)->first();
+        $companyname = $items->name;
+        Companies::find($request->id)->delete();
+        $request->session()->flash('flash_message', '　<span class="small text-muted">「' . $companyname . '」を削除しました。</span>');
+        return redirect('companieslist');
+    }
+    
 }

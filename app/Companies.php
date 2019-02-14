@@ -41,4 +41,12 @@ class Companies extends Model
         );
         return $up_rules;
     }
+
+    public function get_name(){
+        return $this->name;
+    }
+
+    public function get(){
+        return $this;
+    }
 }

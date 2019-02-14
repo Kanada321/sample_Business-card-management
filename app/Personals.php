@@ -22,4 +22,9 @@ class Personals extends Model
         'creat_user_id'  => 'required', //int unsigned,
         'update_user_id'  => 'required', //int unsigned,
     );
+
+    public function companies()
+    {
+        return $this->hasOne('App\Companies', 'id','companies_id');
+    }
 }

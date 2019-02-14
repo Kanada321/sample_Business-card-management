@@ -1,6 +1,6 @@
 @extends('layouts.bgcapp')
 
-@section('title', '会社一覧')
+@section('title', '名刺一覧')
 
 @section('content')
     <div class="col-12">
@@ -10,14 +10,19 @@
             <table class="table mb-0">
                 <thead>
                 <tr>
-                    <th class="pl-0">会社名 {!! session('flash_message') !!}</th><th></th>
+                    <th class="pl-0">会社名</th><th>氏名 {!! session('flash_message') !!}</th><th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($items as $item)
                 <tr>
                     <td>
-                        <a href="companydetail?id={{$item->id}}">{{$item->name}}</a>
+                        @if($item->companies != null)
+                        {{$item->companies->get_name()}}
+                        @endif
+                    </td>
+                    <td class="w-50">
+                        <a href="bgcdetail?id={{$item->id}}">{{$item->name}}</a>
                     </td>
                     <td class="w-1"><a href="javascript:void(0)" class="icon"  onClick="disp('{{$item->id}}','{{$item->name}}')"><i class="fe fe-trash"></i></a></td>
                 </tr>
