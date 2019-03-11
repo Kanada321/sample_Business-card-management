@@ -1,4 +1,5 @@
 <?php
+/*会社テーブルmodel*/
 
 namespace App;
 

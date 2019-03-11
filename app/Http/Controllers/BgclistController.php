@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-//use App\Companies;
-use App\Personals;
+use App\{Companies, Personals};
 use Illuminate\Http\Request;
 
 class BgclistController extends Controller
@@ -27,6 +26,27 @@ class BgclistController extends Controller
 
     public function add()
     {
+        /*名刺新規追加画面*/
+        $companies = Companies::select('id','name')->orderBy('id','asc')->get();
+        $select_ar = [];
+        $selects = [];
+        foreach ($companies as $val){
+            $id = $val['id'];
+            $name = $val['name'];
+            $selects[$id] = $name;
+        }
+        return view('bgc.personaladd',['selects' => $selects]);
+
+    }
+
+    public function addcheck(Request $request){
+        $this->validate($request, Personals::$rules, Personals::$messages);
+        $input = $request->all();
+        unset($input['_token']);
+        $param = ['input' => $input];
+        return view('bgc.personaladdcheck', $param);
+    }
+    public function edit(){
 
     }
 }

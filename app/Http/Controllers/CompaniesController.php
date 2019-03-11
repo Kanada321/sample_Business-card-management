@@ -1,5 +1,5 @@
 <?php
-
+/*会社一覧・新規追加・編集・削除*/
 namespace App\Http\Controllers;
 
 use App\Companies;
@@ -10,7 +10,7 @@ class CompaniesController extends Controller
 
     public function index()
     {
-        /* 会社一覧　*/
+        /*get: 会社一覧　*/
         $items = Companies::orderBy('id','asc')->simplePaginate(5);
         return view('bgc.companieslist',['items' => $items]);
     }
@@ -18,7 +18,6 @@ class CompaniesController extends Controller
     public function add()
     {
      /*get：会社新規登録入力画面*/
-
      return view('bgc.companyadd');
     }
 
@@ -78,6 +77,7 @@ class CompaniesController extends Controller
 
     public function remove(Request $request)
     {
+        /*get:会社削除*/
         $items = Companies::where('id', $request->id)->first();
         $companyname = $items->name;
         Companies::find($request->id)->delete();
