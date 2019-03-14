@@ -1,6 +1,7 @@
 @extends('layouts.bgcapp')
 
 @section('title', '名刺一覧')
+@section('user', $username.'でログインしています。')
 
 @section('content')
     <div class="col-12">

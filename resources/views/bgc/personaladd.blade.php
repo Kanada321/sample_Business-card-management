@@ -1,10 +1,11 @@
 @extends('layouts.bgcapp')
 
 @section('title', '新規名刺登録')
+@section('user', $username.'でログインしています。')
 
 @section('content')
     <div class="col-12">
-        {!! Form::open(['url' => 'bgccreate', 'method' => 'post', 'files' => true,'class'=>'card']) !!}
+        {!! Form::open(['url' => 'bgccheck', 'method' => 'post', 'files' => true,'class'=>'card']) !!}
         <!-- form action="bgccheck" class="card" enctype="multipart/form-data" method="post" accept-charset="utf-8" -->
             <div class="card-header">
                 <h3 class="card-title">@yield('title')</h3>
@@ -21,7 +22,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-label">部署名<span class="form-required">*</span></label>
+                        <label class="form-label">部署名</label>
                         <input type="text" class="form-control name" name="department" placeholder="部署名を記入してください。" value="{{old('department')}}">
                         @if ($errors->has('department'))
                             @foreach($errors->get('department') as $error)
@@ -32,7 +33,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-label">役職名<span class="form-required">*</span></label>
+                        <label class="form-label">役職名</label>
                         <input type="text" class="form-control name" name="position" placeholder="役職名を記入してください。" value="{{old('position')}}">
                         @if ($errors->has('position'))
                             @foreach($errors->get('position') as $error)
@@ -99,20 +100,22 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="form-label">画像選択</label>
-                        <!-- input type="tel" class="form-control tel" name="mobile" placeholder="電話番号を記入してください。" value="{{old('mobile')}}" -->
-
-                        <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-label">画像選択</label>
-                            <!-- div class="form-control-plaintext name">{{$input['mobile']}}</div>
-                        <input type="hidden" name="mobile" value="{{$input['mobile']}}" -->
-                                {!! Form::label('file', '画像アップロード', ['class' => 'control-label']) !!}
-                                {!! Form::file('file') !!}
-                            </div>
-                        </div>
+                                <style>
+                                    .custom-file-label::after{
+                                        content:"選択";
+                                    }
+                                </style>
+                                <div class="custom-file">
+                                {!! Form::file('file', ['class' => 'custom-file-input']) !!}
+                                    <label class="custom-file-label">選択</label>
+                                </div>
 
-                        @if ($errors->has('mobile'))
-                            @foreach($errors->get('mobile') as $error)
+                            </div>
+
+
+                        @if ($errors->has('file'))
+                            @foreach($errors->get('file') as $error)
                                 <div class="invalid-feedback">{{$error}}</div>
                             @endforeach
                         @endif

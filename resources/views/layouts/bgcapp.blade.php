@@ -1,6 +1,6 @@
 <?php
 #echo (empty($_SERVER["HTTPS"]) ? "http://" : "https://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-$path = "http://192.168.11.11:8888/laravel/laravel_bgc/public/";
+$path = "/laravel/laravel_bgc/public/";
 ?>
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
@@ -67,6 +67,9 @@ $path = "http://192.168.11.11:8888/laravel/laravel_bgc/public/";
                             </li>
                             <li class="nav-item">
                                 <a href="companyadd" class="nav-link">　 会社追加</a>
+                            </li>
+                            <li class="nav-item">
+                               | @yield('user')
                             </li>
                         </ul>
                     </div>
